@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PakTools - 12 free, fast and mobile-friendly online tools.">
+<meta name="keywords" content="PakTools, percentage calculator, age calculator, word counter, unit converter, password generator, case converter">
+<meta name="robots" content="index, follow">
+<title>PakTools — 12 Free Online Tools</title>
+<style>
+:root{--bg:#070b18;--card:rgba(255,255,255,.075);--line:rgba(255,255,255,.13);--text:#f7f9ff;--muted:#a9b2c7;--a:#7c5cff;--b:#00d4ff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,system-ui,sans-serif;color:var(--text);background:radial-gradient(circle at 15% 5%,#33206b55,transparent 30%),radial-gradient(circle at 90% 20%,#005a7550,transparent 28%),var(--bg);min-height:100vh}
+nav{position:sticky;top:0;z-index:10;padding:15px 5%;background:#070b18cc;backdrop-filter:blur(18px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:23px;font-weight:900}.logo span{color:var(--b)}
+.nav a{color:#fff;text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:9px 14px;font-size:13px}
+.hero{text-align:center;padding:75px 6% 45px;max-width:1050px;margin:auto}
+.badge{display:inline-block;padding:8px 14px;border:1px solid #00d4ff44;border-radius:99px;color:#91edff;background:#00d4ff0c;font-size:12px;margin-bottom:20px}
+h1{font-size:clamp(42px,9vw,75px);line-height:.98;letter-spacing:-3px}
+.gradient{background:linear-gradient(90deg,#fff,#a8efff,#a88cff);color:transparent;background-clip:text}
+.hero p{max-width:650px;margin:20px auto;color:var(--muted);font-size:17px;line-height:1.6}
+.searchbox{max-width:650px;margin:28px auto;position:relative}
+.searchbox input{width:100%;padding:17px 20px 17px 48px;border-radius:18px;border:1px solid var(--line);background:#ffffff0d;color:white;outline:0;font-size:16px}
+.searchbox span{position:absolute;left:18px;top:15px;font-size:21px}
+.section{max-width:1100px;margin:auto;padding:20px 6% 65px}
+.title{text-align:center;margin-bottom:28px}.title h2{font-size:30px}.title p{color:var(--muted);margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:20px}
+.card{min-height:230px;padding:24px;border:1px solid var(--line);border-radius:23px;background:linear-gradient(145deg,#ffffff12,#ffffff06);box-shadow:0 25px 60px #0005;transition:.3s}
+.card:hover{transform:translateY(-8px);border-color:#00d4ff55}
+.icon{width:53px;height:53px;border-radius:16px;display:grid;place-items:center;font-size:25px;background:linear-gradient(135deg,#7c5cff44,#00d4ff22);border:1px solid var(--line);margin-bottom:18px}
+.card h3{font-size:19px;margin-bottom:8px}.card p{color:var(--muted);font-size:14px;line-height:1.55;min-height:44px}
+button{border:0;border-radius:11px;padding:12px 15px;background:linear-gradient(135deg,#7656ff,#00aeea);color:#fff;font-weight:bold;cursor:pointer;margin-top:16px;width:100%}
+.tool{display:none;margin:28px auto 0;max-width:700px;padding:25px;border:1px solid var(--line);border-radius:22px;background:#ffffff0b}
+.tool.active{display:block}
+.tool h2{margin-bottom:16px}label{display:block;margin:11px 0 6px;font-size:13px;font-weight:bold}
+.tool input,.tool textarea,.tool select{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#0004;color:#fff;font-size:15px}
+.tool textarea{min-height:130px}.result{margin-top:14px;padding:14px;border-radius:10px;background:#00d4ff10;border:1px solid #00d4ff22;font-weight:bold}
+.about{max-width:800px;margin:0 auto 65px;padding:28px;text-align:center;border:1px solid var(--line);border-radius:22px;background:#ffffff08}
+.about h2{margin-bottom:10px}.about p{color:var(--muted);line-height:1.7}
+footer{text-align:center;border-top:1px solid var(--line);padding:28px;color:#7f8aa1;font-size:13px}
+.empty{text-align:center;color:var(--muted);padding:25px;display:none}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="logo">Pak<span>Tools</span> ⚡</div>
+<div class="nav"><a href="#about">About</a></div>
+</nav>
+
+<header class="hero">
+<div class="badge">✦ 12 FREE ONLINE TOOLS</div>
+<h1>Powerful tools.<br><span class="gradient">Made simple.</span></h1>
+<p>Fast, clean and mobile-friendly tools for everyday calculations, text work and productivity.</p>
+<div class="searchbox"><span>⌕</span><input id="search" type="search" placeholder="Search tools..." oninput="filterTools()"></div>
+</header>
+
+<section class="section" id="tools">
+<div class="title"><h2>All Tools</h2><p>Choose a tool and get your result instantly.</p></div>
+<div class="grid" id="grid">
+
+<div class="card" data-name="percentage calculator"><div class="icon">％</div><h3>Percentage Calculator</h3><p>Calculate a percentage of any number.</p><button onclick="openTool('percentTool')">Launch Tool →</button></div>
+<div class="card" data-name="age calculator"><div class="icon">🎂</div><h3>Age Calculator</h3><p>Find exact age from your date of birth.</p><button onclick="openTool('ageTool')">Launch Tool →</button></div>
+<div class="card" data-name="word counter"><div class="icon">✎</div><h3>Word Counter</h3><p>Count words and characters in text.</p><button onclick="openTool('wordTool')">Launch Tool →</button></div>
+<div class="card" data-name="number calculator"><div class="icon">🔢</div><h3>Number Calculator</h3><p>Perform quick basic calculations.</p><button onclick="openTool('numberTool')">Launch Tool →</button></div>
+<div class="card" data-name="discount calculator"><div class="icon">🏷️</div><h3>Discount Calculator</h3><p>Calculate sale price and savings.</p><button onclick="openTool('discountTool')">Launch Tool →</button></div>
+<div class="card" data-name="average calculator"><div class="icon">📊</div><h3>Average Calculator</h3><p>Find the average of multiple numbers.</p><button onclick="openTool('averageTool')">Launch Tool →</button></div>
+<div class="card" data-name="unit converter"><div class="icon">↔️</div><h3>Unit Converter</h3><p>Convert common length and weight units.</p><button onclick="openTool('unitTool')">Launch Tool →</button></div>
+<div class="card" data-name="time calculator"><div class="icon">⏱️</div><h3>Time Calculator</h3><p>Add hours and minutes together.</p><button onclick="openTool('timeTool')">Launch Tool →</button></div>
+<div class="card" data-name="date calculator"><div class="icon">📅</div><h3>Date Calculator</h3><p>Find the number of days between dates.</p><button onclick="openTool('dateTool')">Launch Tool →</button></div>
+<div class="card" data-name="password generator"><div class="icon">🔐</div><h3>Password Generator</h3><p>Create a random secure password.</p><button onclick="openTool('passwordTool')">Launch Tool →</button></div>
+<div class="card" data-name="case converter"><div class="icon">Aa</div><h3>Case Converter</h3><p>Convert text to upper or lower case.</p><button onclick="openTool('caseTool')">Launch Tool →</button></div>
+<div class="card" data-name="text formatter"><div class="icon">📝</div><h3>Text Formatter</h3><p>Clean extra spaces and format text.</p><button onclick="openTool('formatTool')">Launch Tool →</button></div>
+</div>
+<div id="empty" class="empty">No tool found.</div>
+
+<div id="percentTool" class="tool"><h2>％ Percentage Calculator</h2><label>Percentage (%)</label><input id="pp" type="number" placeholder="20"><label>Number</label><input id="pn" type="number" placeholder="500"><button onclick="percent()">Calculate</button><div id="pr" class="result">Result will appear here.</div></div>
+<div id="ageTool" class="tool"><h2>🎂 Age Calculator</h2><label>Date of Birth</label><input id="dob" type="date"><button onclick="age()">Calculate Age</button><div id="ar" class="result">Result will appear here.</div></div>
+<div id="wordTool" class="tool"><h2>✎ Word Counter</h2><textarea id="wt" placeholder="Type or paste text..." oninput="words()"></textarea><div id="wr" class="result">Words: 0 • Characters: 0</div></div>
+<div id="numberTool" class="tool"><h2>🔢 Number Calculator</h2><input id="expr" placeholder="Example: 25 + 10 * 2"><button onclick="numberCalc()">Calculate</button><div id="nr" class="result">Result will appear here.</div></div>
+<div id="discountTool" class="tool"><h2>🏷️ Discount Calculator</h2><label>Original Price</label><input id="price" type="number"><label>Discount %</label><input id="disc" type="number"><button onclick="discount()">Calculate</button><div id="dr" class="result">Result will appear here.</div></div>
+<div id="averageTool" class="tool"><h2>📊 Average Calculator</h2><label>Numbers separated by commas</label><input id="nums" placeholder="10, 20, 30"><button onclick="average()">Calculate</button><div id="avr" class="result">Result will appear here.</div></div>
+<div id="unitTool" class="tool"><h2>↔️ Unit Converter</h2><label>Value</label><input id="uv" type="number" placeholder="1"><label>Convert</label><select id="unit"><option value="kmmi">Kilometers → Miles</option><option value="mift">Miles → Kilometers</option><option value="kgp">Kilograms → Pounds</option><option value="lbk">Pounds → Kilograms</option><option value="mft">Meters → Feet</option></select><button onclick="convert()">Convert</button><div id="ur" class="result">Result will appear here.</div></div>
+<div id="timeTool" class="tool"><h2>⏱️ Time Calculator</h2><label>Hours</label><input id="th" type="number" value="1"><label>Minutes</label><input id="tm" type="number" value="30"><button onclick="timeCalc()">Calculate Total</button><div id="tr" class="result">Result will appear here.</div></div>
+<div id="dateTool" class="tool"><h2>📅 Date Calculator</h2><label>Start Date</label><input id="ds" type="date"><label>End Date</label><input id="de" type="date"><button onclick="dateCalc()">Calculate Days</button><div id="dtr" class="result">Result will appear here.</div></div>
+<div id="passwordTool" class="tool"><h2>🔐 Password Generator</h2><label>Password Length</label><input id="pl" type="number" value="12" min="4" max="40"><button onclick="password()">Generate Password</button><div id="pwr" class="result">Your password will appear here.</div></div>
+<div id="caseTool" class="tool"><h2>Aa Case Converter</h2><textarea id="ct" placeholder="Type text..."></textarea><button onclick="caseConvert('upper')">UPPERCASE</button><button onclick="caseConvert('lower')">lowercase</button><div id="cr" class="result">Converted text will appear here.</div></div>
+<div id="formatTool" class="tool"><h2>📝 Text Formatter</h2><textarea id="ft" placeholder="Paste text with extra spaces..."></textarea><button onclick="formatText()">Clean Text</button><div id="fr" class="result">Formatted text will appear here.</div></div>
+</section>
+
+<section class="about" id="about">
+<h2>About PakTools</h2>
+<p>PakTools is a free online tools website created to make everyday calculations and text tasks simple. All 12 tools are designed to work directly in your browser and are mobile-friendly. No app installation is required.</p>
+</section>
+
+<footer>© 2026 PakTools • Free Online Utilities</footer>
+
+<script>
+function openTool(id){document.querySelectorAll('.tool').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.getElementById(id).scrollIntoView({behavior:'smooth',block:'center'})}
+function filterTools(){let q=document.getElementById('search').value.toLowerCase().trim(),n=0;document.querySelectorAll('.card').forEach(c=>{let ok=c.dataset.name.includes(q);c.style.display=ok?'':'none';if(ok)n++});document.getElementById('empty').style.display=n?'none':'block'}
+function percent(){let p=+pp.value,n=+pn.value;pr.textContent=isNaN(p)||isNaN(n)?'Enter both values.':p+'% of '+n+' = '+p*n/100}
+function age(){let v=dob.value;if(!v){ar.textContent='Select your date of birth.';return}let d=new Date(v+'T00:00:00'),t=new Date(),y=t.getFullYear()-d.getFullYear(),m=t.getMonth()-d.getMonth(),day=t.getDate()-d.getDate();if(day<0){m--;day+=new Date(t.getFullYear(),t.getMonth(),0).getDate()}if(m<0){y--;m+=12}ar.textContent='Age: '+y+' years, '+m+' months, '+day+' days'}
+function words(){let s=wt.value,w=s.trim()?s.trim().split(/\s+/).length:0;wr.textContent='Words: '+w+' • Characters: '+s.length}
+function numberCalc(){try{let x=expr.value.replace(/[^0-9+\-*/().% ]/g,'');nr.textContent='Result: '+Function('return '+x)()}catch(e){nr.textContent='Invalid calculation.'}}
+function discount(){let p=+price.value,d=+disc.value,s=p*d/100;dr.textContent='You save: '+s.toFixed(2)+' • Final price: '+(p-s).toFixed(2)}
+function average(){let a=nums.value.split(',').map(Number).filter(x=>!isNaN(x));avr.textContent=a.length?'Average: '+(a.reduce((x,y)=>x+y,0)/a.length).toFixed(2):'Enter numbers separated by commas.'}
+function convert(){let v=+uv.value,u=unit.value,m={kmmi:.621371,mift:1.60934,kgp:2.20462,lbk:.453592,mft:3.28084};ur.textContent='Result: '+(v*m[u]).toFixed(4)}
+function timeCalc(){let total=(+th.value*60)+(+tm.value);tr.textContent='Total: '+Math.floor(total/60)+' hours '+total%60+' minutes'}
+function dateCalc(){if(!ds.value||!de.value){dtr.textContent='Select both dates.';return}let a=new Date(ds.value),b=new Date(de.value);dtr.textContent='Difference: '+Math.abs(Math.round((b-a)/86400000))+' days'}
+function password(){let chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*',l=Math.min(40,Math.max(4,+pl.value||12)),s='';for(let i=0;i<l;i++)s+=chars[Math.floor(Math.random()*chars.length)];pwr.textContent=s}
+function caseConvert(type){let s=ct.value;cr.textContent=type==='upper'?s.toUpperCase():s.toLowerCase()}
+function formatText(){fr.textContent=ft.value.replace(/\s+/g,' ').trim()}
+</script>
+</body>
+</html>
